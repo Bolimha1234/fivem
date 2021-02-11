@@ -39,7 +39,7 @@ class Server {
 		});
 	}
 	
-				getBanner) {
+				getBanner() {
 		return new Promise((send, err) => {
 axios
 				.get(`http://${this.ip}/info.json`)
