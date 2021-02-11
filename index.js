@@ -26,6 +26,20 @@ class Server {
 		});
 	}
 
+    	getHostname() {
+		return new Promise((send, err) => {
+			axios
+				.get(`http://${this.ip}/dynamic.json`, { timeout: this.options.timeout })
+				.then(function(body) {
+					let hostname = body.data.hostname;
+					send(hostname);
+				})
+				.catch(function(error) {
+					err(error);
+				});
+		});
+	}
+
 	getServerStatus() {
 		return new Promise((send, err) => {
 			axios
