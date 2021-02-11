@@ -38,6 +38,19 @@ class Server {
 				});
 		});
 	}
+	
+				getBanner) {
+		return new Promise((send, err) => {
+axios
+				.get(`http://${this.ip}/info.json`)
+				.then(function(body) {
+					send(body.data.vars.banner_detail);
+				})
+				.catch(function(error) {
+					err(error);
+				});
+		});
+	}
 
 	getServerStatus() {
 		return new Promise((send, err) => {
