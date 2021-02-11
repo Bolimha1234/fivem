@@ -25,6 +25,19 @@ class Server {
 				});
 		});
 	}
+	
+			getHostname() {
+		return new Promise((send, err) => {
+			axios
+				.get(`http://${this.ip}/dynamic.json`, { timeout: this.options.timeout })
+				.then(function(body) {
+					send(body.data.hostname);
+				})
+				.catch(function(error) {
+					err(error);
+				});
+		});
+	}
 
 	getServerStatus() {
 		return new Promise((send, err) => {
